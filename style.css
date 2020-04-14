@@ -88,7 +88,11 @@ a.btn {
   background: linear-gradient(to bottom, #FF4D09, #B23000);
   border-radius: 8px;
   margin-top: 18px;
-  transition: all 0.2s;
+  transition: all 0.25s;
+}
+
+a.btn:hover {
+  transform: scale(1.0);
 }
 
 a.btn:active {

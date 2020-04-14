@@ -29,10 +29,10 @@ function getUrlVars() {
 var url_vars = getUrlVars();
 
 // create url_vars cookie
-// and reload data if action
+// and reload data if ~~action~~
 // and zone is in the url_vars
 
-if (url_vars["action"] != "" && url_vars["zone"] != "" && url_vars["action"] != null && url_vars["zone"] != null) {
+if (url_vars["zone"] != "" && url_vars["zone"] != null) {
   var url_vars_str = JSON.stringify(url_vars);
   setCookie('url_params',url_vars_str);
 }
@@ -41,14 +41,6 @@ if (getCookie('url_params') != "") {
   var url_vars_json = getCookie('url_params');
   var url_vars = JSON.parse(url_vars_json);
 }
-
-// fill in data table in HTML
-document.getElementById("ip").innerHTML             = url_vars["ip"];
-document.getElementById("browser").innerHTML        = url_vars["browser"];
-document.getElementById("device_make").innerHTML    = url_vars["device_make"];
-document.getElementById("device_model").innerHTML   = url_vars["device_model"];
-document.getElementById("org").innerHTML            = url_vars["org"];
-document.getElementById("city").innerHTML           = url_vars["city"];
 
 // create and load cookies
 function setCookie(cname,cvalue,exdays) {
@@ -79,12 +71,8 @@ function getCookie(cname) {
 // othervise load from storage cookie
 
 function checkLink() {
-  var click_id_link = url_vars["action"];
   var zone_link = url_vars["zone"];
 
-  if (click_id_link != "" && click_id_link != null) {
-    setCookie("click_id_cookie", click_id_link, 30);
-  }
 
   if (zone_link != "" && zone_link != null) {
     setCookie("zone_cookie", zone_link, 30);
@@ -93,19 +81,19 @@ function checkLink() {
   var click_id_cookie = getCookie("click_id_cookie");
   var zone_cookie = getCookie("zone_cookie");
 
-  if (click_id_cookie != "" && zone_cookie != "" && click_id_cookie != null && zone_cookie != null) {
+  if (zone_cookie != "" && zone_cookie != null) {
     // build and replace links
     var links = document.getElementsByTagName('a');
 
     for (var i = 0; i < links.length; i++) {
-      var link = "https://track.ultravpn.com/5d02892a4faea/click/" + zone_cookie + "/" + click_id_cookie + "/eztv";
+      var link = "https://mediaserver.gvcaffiliates.com/renderBanner.do?zoneId=1912006&tdpeh=" + zone_cookie;
       links[i].setAttribute('href', link);
     }
   }
   else {
     var links = document.getElementsByTagName('a');
     for (var i = 0; i < links.length; i++) {
-      var link = "https://track.ultravpn.com/5d02892a4faea/click";
+      var link = "https://mediaserver.gvcaffiliates.com/renderBanner.do?zoneId=1912006";
       links[i].setAttribute('href', link);
     }
   }
@@ -115,8 +103,21 @@ function checkLink() {
 var links = document.getElementsByTagName('a');
 for(var i = 0, len = links.length; i < len; i++) {
     links[i].onclick = function() {
-        // important here to be inside function() { etc. }
-        //console.log('yes ( ͡☉ ͜ʖ ͡☉) '+ i);
         checkLink();
     }
+}
+
+
+// --- button animation ---
+
+function scale() {
+  document.getElementById('play').style.webkitTransform  = 'scale(1.12)';
+  setTimeout(function(){
+    document.getElementById('play').style.webkitTransform  = 'scale(1)';
+  }, 260);
+}
+setInterval(scale, 2500);
+
+document.getElementById('play').onmouseover = function() {
+  document.getElementById('play').style = '';
 }
