@@ -49,12 +49,60 @@ table {
 }
 
 body {
-  background: url(img/bg.jpg) no-repeat center center fixed; ;
+  background: url(img/bg.jpg) no-repeat center right fixed; ;
   background-size: cover;
   color: white;
 }
 
+.logo img {
+  width: 200px;
+  padding-bottom: 24px;
+}
+
+p {
+  font-weight: 300;
+  padding-bottom: 16px;
+  font-size: 1.75em;
+}
+
+p.secondary {
+  color: #ccc;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 3em;
+  padding-bottom: 24px;
+}
+
+a.btn {
+  text-decoration: none;
+  display: inline-block;
+  padding: 24px 80px;
+  font-size: 2.25em;
+  font-weight: 500;
+  color: #fff;
+  background: url('img/btn-bg.png');
+  background: -webkit-linear-gradient(top, #FF4D09, #B23000);
+  background: -moz-linear-gradient(top, #FF4D09, #B23000);
+  background: linear-gradient(to bottom, #FF4D09, #B23000);
+  border-radius: 8px;
+  margin-top: 18px;
+  transition: all 0.2s;
+}
+
+a.btn:active {
+  transform: scale(0.97);
+}
+
 .box {
-  width:70%;
-  margin: 0 auto;
+  width:80%;
+  margin: 7% auto 0 auto;
+}
+
+/* 1280px */
+@media screen and (max-width: 80em) {
+  body {
+    font-size: 85%;
+  }
 }
