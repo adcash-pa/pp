@@ -1,3 +1,3 @@
 # pp
 
-party poker prelander
+party poker prelander - static version
